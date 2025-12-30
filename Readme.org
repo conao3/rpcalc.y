@@ -1,12 +1,66 @@
-#+author: conao
-#+date: <2018-10-25 Thu>
+#+title: rpcalc.y
+#+author: conao3
 
-* bison-rpcalc
-[[https://github.com/conao3/bison-rpcalc][https://img.shields.io/github/tag/conao3/bison-rpcalc.svg?style=flat-square]]
-[[https://travis-ci.org/conao3/bison-rpcalc][https://img.shields.io/travis/conao3/bison-rpcalc/master.svg?style=flat-square]]
-[[https://github.com/conao3/bison-rpcalc][https://img.shields.io/github/license/conao3/bison-rpcalc.svg?style=flat-square]]
+* rpcalc.y
 
-* What is it?
-This is flex-bison practice repository.
+A Reverse Polish Notation (RPN) calculator implemented with Bison and Flex.
 
-See http://guppy.eng.kagawa-u.ac.jp/2009/ProgLang/bison-1.2.8/bison-ja_5.html
+** Overview
+
+This project demonstrates how to build a simple calculator using the classic Bison parser generator. The implementation follows the traditional RPN approach where operators follow their operands.
+
+** Features
+
+- Basic arithmetic: addition, subtraction, multiplication, division
+- Power function using =^= operator
+- Unary negation using =n=
+- Floating-point number support
+
+** Requirements
+
+- GCC
+- GNU Bison
+- GNU Flex (optional, lexer is included)
+
+** Building
+
+#+begin_src shell
+make
+#+end_src
+
+** Usage
+
+Run the calculator and enter expressions in Reverse Polish Notation:
+
+#+begin_src shell
+./bison-calc
+#+end_src
+
+Example inputs:
+
+#+begin_example
+3 4 +         # Result: 7
+5 2 -         # Result: 3
+6 7 *         # Result: 42
+10 2 /        # Result: 5
+2 8 ^         # Result: 256
+5 n           # Result: -5
+#+end_example
+
+** How RPN Works
+
+In Reverse Polish Notation, operators come after their operands instead of between them. For example:
+
+| Infix (Standard) | RPN         |
+|------------------+-------------|
+| 3 + 4            | 3 4 +       |
+| (2 + 3) * 4      | 2 3 + 4 *   |
+| 2 ^ 8            | 2 8 ^       |
+
+** References
+
+- [[https://www.gnu.org/software/bison/manual/][GNU Bison Manual]]
+
+** License
+
+MIT License. See [[file:LICENSE][LICENSE]] for details.
